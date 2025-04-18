@@ -1,1 +1,9 @@
-/build
+# Android Studio config
+.idea/
+*.iml
+
+# Local config
+local.properties
+
+# Build output
+/build/
