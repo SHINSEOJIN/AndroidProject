@@ -61,18 +61,19 @@ public class MainActivity extends AppCompatActivity {
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     Intent intent = result.getData();
-                    if (intent != null) {
+                    if (result.getResultCode() == RESULT_OK && intent != null) {
                         int id = (int) intent.getLongExtra("id", 0);
-                        String name = intent.getStringExtra("name");
-                        String email = intent.getStringExtra("email");
-                        String phone = intent.getStringExtra("phone");
-                        String memo = intent.getStringExtra("memo");
                         String photo = intent.getStringExtra("photo");
 
-                        Student student = new Student(id, name, email, phone, memo, photo);
-                        datas.clear();
-                        getListData();
+                        for (Student s : datas) {
+                            if (s.getId() == id) {
+                                s.setPhoto(photo);
+                                break;
+                            }
+                        }
+
                         adapter.setFilteredList(datas);
+                        adapter.notifyDataSetChanged();
                     }
                 }
         );

@@ -56,7 +56,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             if (file.exists()) {
                 Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
                 if (bitmap != null) {
-                    holder.binding.itemImageView.setImageBitmap(bitmap.copy(bitmap.getConfig(), true));
+                    holder.binding.itemImageView.setImageBitmap(bitmap);
                 } else {
                     holder.binding.itemImageView.setImageResource(R.drawable.ic_student_small);
                 }
@@ -66,6 +66,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         } else {
             holder.binding.itemImageView.setImageResource(R.drawable.ic_student_small);
         }
+
 
         holder.binding.itemNameView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);

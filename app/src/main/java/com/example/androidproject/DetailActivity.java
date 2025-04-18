@@ -39,6 +39,8 @@ public class DetailActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> requestGalleryLauncher;
     public ActivityResultLauncher<Intent> editScoreLauncher;
 
+    String filePath = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,6 +160,7 @@ public class DetailActivity extends AppCompatActivity {
             db.close();
 
             Intent resultIntent = new Intent();
+            resultIntent.putExtra("photo", filePath);
             resultIntent.putExtra("id", student.getId());
             setResult(RESULT_OK, resultIntent);
             finish();
@@ -171,7 +174,7 @@ public class DetailActivity extends AppCompatActivity {
                         String[] proj = new String[]{MediaStore.Images.Media.DATA};
                         Cursor galleryCursor = getContentResolver().query(uri, proj, null, null, null);
                         if (galleryCursor != null && galleryCursor.moveToFirst()) {
-                            String filePath = galleryCursor.getString(0);
+                            filePath = galleryCursor.getString(0);
                             DBHelper helper = new DBHelper(this);
                             SQLiteDatabase db = helper.getWritableDatabase();
                             db.execSQL("update tb_student set photo=? where _id=?",
@@ -242,6 +245,11 @@ public class DetailActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapUtil.getGalleryBitmapFromFile(this, photoFilePath);
         if (bitmap != null) {
             binding.detailImage.setImageBitmap(bitmap);
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("photo", filePath);
+            resultIntent.putExtra("id", student.getId());
+            setResult(RESULT_OK, resultIntent);
         }
 
         binding.detailImage.setOnClickListener(view -> {
