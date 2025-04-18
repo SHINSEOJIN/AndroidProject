@@ -67,7 +67,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             holder.binding.itemImageView.setImageResource(R.drawable.ic_student_small);
         }
 
-
         holder.binding.itemNameView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("id", student.getId());

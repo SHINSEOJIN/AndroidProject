@@ -258,7 +258,6 @@ public class DetailActivity extends AppCompatActivity {
             requestGalleryLauncher.launch(intent);
         });
     }
-
     private void setInitScoreData(int id) {
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();

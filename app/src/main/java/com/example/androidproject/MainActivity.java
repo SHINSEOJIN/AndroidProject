@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     ActivityMainBinding binding;
     ActivityResultLauncher<Intent> addLauncher;
     List<Student> datas = new ArrayList<>();
