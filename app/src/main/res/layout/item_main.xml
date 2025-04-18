@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/itemImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_student_small"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/circle_mask"
+        android:clipToOutline="true"/>
+
+    <TextView
+        android:id="@+id/itemNameView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="학생이름"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/itemCallView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/icon_call_contact"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="전화 아이콘" />
+
+    <ImageView
+        android:id="@+id/itemEditView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/icon_pencil"
+        android:contentDescription="수정 아이콘" />
+</LinearLayout>
